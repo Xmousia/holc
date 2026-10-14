@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reading the Redlining Record</title>
+<meta name="description" content="Two ways of reading the HOLC redlining record: the appraisers' vocabulary across 7,929 forms, and an algorithmic audit of the grades, plus maps of Newport News and Roanoke.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+/* Layout: project index on survey-sheet paper. Two lead studies as large sheets, two city maps as smaller ones, then about/sources. */
+:root{
+  --bg:#e8ecee; --sheet:#f6f8f8; --fg:#1d2529; --muted:#5a676d; --rule:#c4ccd0; --line:#2b3438; --focus:#1f5f8b;
+  --gA:#76a865; --gB:#7cb5bd; --gC:#e8d630; --gD:#d9838d;
+  --display:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --typed:"Courier Prime","Courier New",Courier,monospace;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root{--bg:#13181b; --sheet:#1b2226; --fg:#e3e8ea; --muted:#97a4aa; --rule:#33404a; --line:#0d1113; --focus:#7fb8e0; color-scheme:dark}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--display);font-size:16px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px;display:grid;gap:28px}
+.stripe{display:flex;height:10px;max-width:220px;border:1px solid var(--line)}
+.stripe span{flex:1}
+header{display:grid;gap:12px;max-width:68ch}
+.eyebrow{font-family:var(--typed);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{font-weight:800;font-size:clamp(34px,5.6vw,58px);line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+header p{margin:0;color:var(--muted);font-size:17px}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.maps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+a.card{display:grid;gap:10px;align-content:start;background:var(--sheet);border:1px solid var(--rule);padding:20px;color:inherit;text-decoration:none;transition:border-color .15s}
+a.card:hover{border-color:var(--line)}
+a.card:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.card .kind{font-family:var(--typed);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card h2{margin:0;font-weight:800;font-size:clamp(22px,2.8vw,28px);line-height:1.12}
+.card h3{margin:0;font-weight:800;font-size:20px;line-height:1.15}
+.card p{margin:0}
+.card .stat{font-family:var(--typed);font-size:14px;border-top:1px dashed var(--rule);padding-top:10px;color:var(--fg)}
+.card .go{font-family:var(--typed);font-size:13.5px;color:var(--focus);font-weight:700}
+section.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;border-top:1px solid var(--rule);padding-top:24px}
+section.about h2{margin:0 0 6px;font-family:var(--typed);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+section.about p{margin:0 0 10px;font-size:15px;max-width:60ch}
+section.about a{color:var(--focus)}
+code{font-family:var(--typed);font-size:14px}
+@media (prefers-reduced-motion:reduce){a.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="stripe" aria-hidden="true"><span style="background:var(--gA)"></span><span style="background:var(--gB)"></span><span style="background:var(--gC)"></span><span style="background:var(--gD)"></span></div>
+    <div class="eyebrow">HOLC redlining, 1935–1940</div>
+    <h1>Reading the Redlining Record</h1>
+    <p>The Home Owners' Loan Corporation's maps are well known. The typed forms behind them get less attention. These studies read those forms closely: the words the appraisers used, and whether their grades followed the numbers they recorded.</p>
+  </header>
+
+  <div class="lead">
+    <a class="card" href="lexicon/">
+      <span class="kind">Study 1 &middot; Discourse</span>
+      <h2>The Appraisers' Lexicon</h2>
+      <p>Every word in 7,929 area descriptions, placed on the A-to-D scale. Search any word or phrase and read every line it appears in.</p>
+      <p class="stat">"homogeneous" &middot; 24&times; as common in A forms as in D forms</p>
+      <span class="go">Open the lexicon &rarr;</span>
+    </a>
+    <a class="card" href="audit/">
+      <span class="kind">Study 2 &middot; Algorithmic audit</span>
+      <h2>The Redlining Audit</h2>
+      <p>A model trained only on the economic numbers on each form, then tested the way modern risk-scoring systems are audited.</p>
+      <p class="stat">Same numbers, C-like: 5% graded D &rarr; 18% when only the race field changes</p>
+      <span class="go">Open the audit &rarr;</span>
+    </a>
+  </div>
+
+  <div class="maps">
+    <a class="card" href="maps/newport-news/">
+      <span class="kind">Map &middot; April 3, 1937</span>
+      <h3>Newport News, Virginia</h3>
+      <p>17 graded areas over the original georeferenced sheet. No neighborhood received an A.</p>
+      <span class="go">Open the map &rarr;</span>
+    </a>
+    <a class="card" href="maps/roanoke/">
+      <span class="kind">Map &middot; May 15, 1937</span>
+      <h3>Roanoke and Salem, Virginia</h3>
+      <p>32 graded areas over the original sheets, with each area's transcribed appraiser form.</p>
+      <span class="go">Open the map &rarr;</span>
+    </a>
+  </div>
+
+  <section class="about">
+    <div>
+      <h2>Sources</h2>
+      <p>All boundaries, grades, map scans and form transcriptions come from <a href="https://dsl.richmond.edu/panorama/redlining/">Mapping Inequality: Redlining in New Deal America</a>, by Robert K. Nelson, LaDale Winling, Richard Marciano, Nathan Connolly, et al., in <i>American Panorama</i>, ed. Robert K. Nelson and Edward L. Ayers (Digital Scholarship Lab, University of Richmond). Form transcriptions are from their <a href="https://github.com/americanpanorama/HOLC_Area_Description_Data">area description data</a>.</p>
+    </div>
+    <div>
+      <h2>A note on language</h2>
+      <p>The forms are quoted as transcribed, including the racial and ethnic terms the appraisers used. They are shown because that language is the evidence: it is how a federal agency wrote race into its definition of risk.</p>
+    </div>
+    <div>
+      <h2>Reproduce and reuse</h2>
+      <p>The scripts in <a href="https://github.com/Xmousia/holc/tree/main/analysis"><code>analysis/</code></a> rebuild every number on these pages from Mapping Inequality's data. Derived data and pages are shared under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>, matching the source data's license.</p>
+    </div>
+  </section>
+</div>
+</body>
+</html>
